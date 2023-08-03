@@ -1,0 +1,31 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mb-4">Recipes app home page</h1>
+  <form method="GET" action="{% url 'recipes-search' %}">
+    <input type="text" name="q" placeholder="Enter title, ingredients or time" />
+    <button type="submit">Search</button>
+  </form>
+  <div class="row">
+    {% for recipe in recipes %}
+    <div class="col-md-4">
+      <div class="card my-4">
+        {% if recipe.image %}
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="card-img-top">
+        {% endif %}
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">{{ recipe.title }}</h4>
+          <p class="card-subtitle mb-2 text-muted">By {{ recipe.author.username }}</p>
+          <p class="card-text">{{ recipe.description }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <small>{{ recipe.created_at|date:"F d, Y" }}</small>
+          <a href="{% url 'recipes-detail' recipe.pk %}" class="btn btn-primary float-end">View Recipe</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

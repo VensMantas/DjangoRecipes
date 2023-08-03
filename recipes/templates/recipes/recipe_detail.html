@@ -1,0 +1,28 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<article class="container">
+  <h1>Recipe: {{ object.title }}, created by {{ object.author.username }}</h1>
+  <div class="row">
+    {% if object.image %}
+    <img src="{{ object.image.url }}" alt="{{ object.title }}" class="img-fluid" style="max-width: 400px; height: auto;">
+    {% endif %}
+    </div>
+      <p>It will take: {{ object.cooking_time }} minutes to make.</p>
+      <h4>Description</h4>
+      <p>{{ object.description }}</p>
+      <h4>You will need:</h4>
+      <p>{{ object.ingredients }}</p>
+      <h4>Instructions</h4>
+      <p>{{ object.instructions }}</p>
+      <p>{{ object.created_at|date:"F d, Y" }}</p>
+      {% if object.author == user or user.is_staff %}
+        <div class="col-4">
+          <a class="btn btn-outline-info" href="{% url 'recipes-update' object.id %}">Update</a>
+          <a class="btn btn-outline-danger" href="{% url 'recipes-delete' object.id %}">Delete</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</article>
+{% endblock content %}

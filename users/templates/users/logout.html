@@ -1,0 +1,12 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Logged out!</h1>
+    <div class="border-top pt-3">
+      <a href="{% url 'user-login' %}">Log in here.</a>
+    </div>
+</div>
+
+{% endblock content %}
