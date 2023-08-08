@@ -16,22 +16,22 @@ docker-compose build
 
 3. Run the Docker containers:
 
-3.1. Firstly, run:
+3.1. Firstly, run: <br>
 docker-compose up db
 
-Once it's created 
-(last message "django_mysql  | 2023-08-08T01:03:32.522674Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.1.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL."), 
-
-Press Ctrl+C to stop the container.
+Once it's created <br>
+(last message "django_mysql  | 2023-08-08T01:03:32.522674Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.1.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL."), <br>
+<br>
+Press Ctrl+C to stop the container.<br>
 
 3.2. Then, run these commands one by one:
-docker-compose up db -d
-docker-compose up web -d
+docker-compose up db -d<br>
+docker-compose up web -d<br>
 
-3.3. Once both processes are running, migrate the database:
+3.3. Once both processes are running, migrate the database:<br>
 docker-compose exec web python manage.py migrate
 
-4. The application should be accessible at http://localhost:8000/.
+4. The application should be accessible at http://localhost:8000/ (same as http://127.0.0.1:8000/)
 
 # Testing
 
