@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED 1
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
-    libmysqlclient-dev
+    default-libmysqlclient-dev
 
 # Create and set the working directory
 WORKDIR /app
